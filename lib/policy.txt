@@ -1,0 +1,27 @@
+grant codebase "file:./-"{
+        permission java.io.FilePermission "E:/-", "read";
+        permission javax.security.auth.AuthPermission "createLoginContext.Sample";
+        permission javax.security.auth.AuthPermission "modifyPrincipals";
+        permission javax.security.auth.AuthPermission "doAsPrivileged";
+};
+ 
+grant codebase "file:./-",
+        Principal jaas.SamplePrincipal 
+        "CN=ha, OU=nk, O=nk, L=tj, ST=tj, C=cn" 
+ {
+   	permission java.util.PropertyPermission "java.home", "read";
+   	permission java.util.PropertyPermission "user.home", "read";
+   	permission java.util.PropertyPermission "user.dir", "read";
+	permission java.security.AllPermission;
+  };
+  
+grant codebase "file:./-",
+        Principal jaas.SamplePrincipal 
+        "CN=ch, OU=nk, O=nk, L=tj, ST=tj, C=cn" 
+ {
+   	permission java.util.PropertyPermission "java.home", "read";
+   	permission java.util.PropertyPermission "user.home", "read";
+   	permission java.util.PropertyPermission "user.dir", "read";
+	permission java.security.AllPermission;
+  };
+  

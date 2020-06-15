@@ -1,0 +1,86 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <fstream>
+#include <vector>
+#include <string>
+#include <sstream>
+#include <algorithm>
+using namespace std;
+#define present1 "愿望券"
+#define present2 "火锅券"
+#define present3 "烧烤券"
+#define present4 "没想好是啥"
+#define present5 "也没想好"
+int pr1,pr2,pr3,pr4,pr5;
+void print(){
+	ifstream fin("1.txt");  
+	fin>>pr1;fin.close();
+	cout<<present1<<" 有 "<<pr1<<" 个"<<endl;
+	ifstream fin2("2.txt");  
+	fin2>>pr2;fin2.close();
+	cout<<present2<<" 有 "<<pr2<<" 个"<<endl;
+	ifstream fin3("3.txt");  
+	fin3>>pr3;fin3.close();
+	cout<<present3<<" 有 "<<pr3<<" 个"<<endl;
+	ifstream fin4("4.txt");  
+	fin4>>pr4;fin4.close();
+	cout<<present4<<" 有 "<<pr4<<" 个"<<endl;
+	ifstream fin5("5.txt");  
+	fin5>>pr5;fin5.close();
+	cout<<present5<<" 有 "<<pr5<<" 个"<<endl;
+}
+void lottery(){
+	int a=0;int b=10;
+	srand((int)time(0));
+	int temp=(rand() % (b-a+1))+ a; 
+	if(temp>=0&&temp<=3)
+	{ifstream fin("1.txt");  
+	fin>>pr1;pr1++;
+	fin.close();
+	ofstream fout("1.txt"); 
+	fout<<pr1;
+	fout.close();
+	cout<<"抽到了 "<<present1<<" !"<<endl;
+	}
+	else if(temp>=4&&temp<=5)
+		{ifstream fin( "2.txt" );  
+	fin>>pr2;pr2++;
+	fin.close();
+	ofstream fout("2.txt"); 
+	fout<<pr2;
+	fout.close();
+	cout<<"抽到了 "<<present2<<" !"<<endl;
+	}
+	else if(temp==7||temp==6)
+		{ifstream fin( "3.txt" );  
+	fin>>pr3;pr3++;
+	fin.close();
+	ofstream fout("3.txt"); 
+	fout<<pr3;
+	fout.close();
+	cout<<"抽到了 "<<present3<<" !"<<endl;}
+	else if(temp==8)
+		{ifstream fin( "4.txt" );  
+	fin>>pr4;pr4++;
+	fin.close();
+	ofstream fout("4.txt"); 
+	fout<<pr4;
+	fout.close();
+	cout<<"抽到了 "<<present4<<" !"<<endl;}
+	else if(temp==9)
+		{ifstream fin( "5.txt" );  
+	fin>>pr5;
+	pr5++;
+	fin.close();
+	ofstream fout("5.txt"); 
+	fout<<pr5;
+	fout.close();
+	cout<<"抽到了 "<<present5<<" !"<<endl;}
+}
+int main()
+{
+	
+	lottery();
+	print();
+}
